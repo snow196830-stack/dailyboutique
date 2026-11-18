@@ -38,16 +38,28 @@ python3 -m http.server 8000
 
 정적 파일만으로 동작합니다(서버 사이드 없음). `file://` 로 열면 `content.json` 을 읽지 못하지만, 그때는 `index.html` 에 들어 있는 기본 문구로 그대로 보입니다.
 
-## 배포 (아직 안 함)
+## 배포 (완료 · 2026-11-19)
 
-폴더 전체를 그대로 올리면 됩니다. GitHub Pages 기준:
+- 라이브: **https://snow196830-stack.github.io/dailyboutique/** (관리자: `/admin/`)
+- 저장소: `snow196830-stack/dailyboutique` (public) · 브랜치 `main` · GitHub Pages `Deploy from a branch` / `/ (root)`
+- 최초 배포 커밋: `4d24a30`
 
-1. `snow196830-stack/dailyboutique` 저장소를 만들고 이 폴더 내용을 올립니다.
-2. Settings → Pages → Branch: `main` / root.
-3. 주소가 `https://snow196830-stack.github.io/dailyboutique/` 가 되면 아래 2곳의 주소가 맞는지 확인합니다.
-   - `index.html` 의 `og:url` · `og:image` · `canonical` (현재 위 주소로 넣어 둠)
-   - `admin/admin.js` 의 `REPO` 기본값 `dailyboutique` (저장소 이름이 다르면 `?repo=` 또는 코드 수정)
-   - `robots.txt` · `sitemap.xml` 의 주소
+### 다시 올릴 때
+
+원본은 이 폴더(`voi-creative-studio/daily-boutique/`)이고, 웹에 나가는 파일만 `voi-creative-studio/daily-boutique-deploy/`(저장소 클론)에 복사해 커밋합니다. `preview/`, `tools/`, `notes/` 는 저장소에 올리지 않습니다.
+
+```bash
+SRC=voi-creative-studio/daily-boutique; DST=voi-creative-studio/daily-boutique-deploy
+cp "$SRC/index.html" "$SRC/styles.css" "$SRC/app.js" "$SRC/robots.txt" "$SRC/sitemap.xml" "$SRC/.nojekyll" "$SRC/README.md" "$DST"/
+cp -r "$SRC/data/." "$DST/data/"; cp -r "$SRC/admin/." "$DST/admin/"; cp -r "$SRC/assets/." "$DST/assets/"
+cd "$DST" && git add -A && git commit -m "..." && git push
+```
+
+문구·가격·사진만 고칠 때는 저장소를 건드릴 필요 없이 `/admin/` 에서 저장하면 30~60초 뒤 라이브에 반영됩니다.
+
+### 주소가 바뀌면 확인할 곳
+
+`index.html` 의 `og:url` · `og:image` · `canonical`, `admin/admin.js` 의 `REPO` 기본값, `robots.txt` · `sitemap.xml`.
 
 ## 관리자 페이지 (`/admin/`) — 원장님 전달용
 
