@@ -1,0 +1,177 @@
+/* =========================================================
+   데일리뷰티끄 — 관리자 페이지 스타일
+   ========================================================= */
+:root{
+  --paper:#fbf8f4;
+  --paper-2:#f6efe7;
+  --ink:#241f1c;
+  --ink-2:#4b423c;
+  --muted:#8d7c6f;
+  --accent:#b07a63;
+  --accent-deep:#8e5a44;
+  --line:#e6d9cb;
+  --line-2:#dbccbc;
+  --kakao:#fee500;
+  --ok:#2f7d5b;
+  --warn:#a8712a;
+  --bad:#a63a2e;
+  --serif:"Noto Serif KR",Georgia,serif;
+  --sans:"Noto Sans KR",-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--paper-2);color:var(--ink);
+  font-family:var(--sans);font-size:15px;line-height:1.7;
+  word-break:keep-all;-webkit-font-smoothing:antialiased;
+}
+a{color:var(--accent-deep)}
+[hidden]{display:none !important}
+p,h1,h2,h3,h4{margin:0}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12.5px;background:#efe5da;padding:1px 5px;border-radius:3px}
+
+/* topbar */
+.topbar{
+  position:sticky;top:0;z-index:20;
+  display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  padding:12px clamp(16px,3vw,32px);
+  background:var(--ink);color:#f3e9de;
+}
+.topbar__brand{display:flex;align-items:baseline;gap:12px}
+.topbar__logo{font-family:var(--serif);font-size:16px;letter-spacing:.24em;color:#fff}
+.topbar__sub{font-size:11.5px;letter-spacing:.1em;color:#b9a396}
+.topbar__right{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.topbar__status{font-size:12px;color:#d8c6b8}
+.dot{width:8px;height:8px;border-radius:50%;background:#8c7b6f;display:inline-block}
+.dot.is-ok{background:#57c08a}
+.dot.is-warn{background:#e0b462}
+.dot.is-bad{background:#e07a6a}
+
+.page{max-width:1000px;margin:0 auto;padding:clamp(20px,3vw,34px) clamp(14px,3vw,26px) 60px}
+
+/* buttons */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  padding:10px 18px;font-size:13.5px;border-radius:3px;border:1px solid transparent;
+  cursor:pointer;transition:background .2s,color .2s,border-color .2s;white-space:nowrap;font-family:inherit;
+}
+.btn--sm{padding:7px 13px;font-size:12px}
+.btn--primary{background:var(--accent);color:#fff}
+.btn--primary:hover{background:var(--accent-deep)}
+.btn--ghost{border-color:var(--line-2);background:#fff;color:var(--ink-2)}
+.btn--ghost:hover{border-color:var(--accent);color:var(--accent-deep)}
+.topbar .btn--ghost{background:transparent;border-color:rgba(255,255,255,.3);color:#eee0d3}
+.topbar .btn--ghost:hover{background:rgba(255,255,255,.12);color:#fff}
+.btn--block{width:100%;justify-content:center}
+.btn--add{margin-top:12px;border:1px dashed var(--line-2);background:#fff;color:var(--accent-deep);width:100%}
+.btn--add:hover{border-color:var(--accent);background:#fdf8f3}
+.linklike{border:0;background:none;color:var(--accent-deep);text-decoration:underline;cursor:pointer;padding:0;font:inherit}
+
+/* gate */
+.gate{display:grid;place-items:start center;padding:clamp(18px,4vw,48px) 0}
+.gate__card{
+  width:min(100%,640px);background:#fff;border:1px solid var(--line);
+  padding:clamp(22px,3.4vw,36px);box-shadow:0 24px 60px -50px rgba(60,40,30,.8);
+}
+.gate__card--sm{max-width:420px}
+.eyebrow{font-family:var(--serif);font-size:11px;letter-spacing:.28em;color:var(--accent);text-transform:uppercase}
+.gate__title{font-family:var(--serif);font-weight:500;font-size:clamp(20px,2.6vw,26px);margin-top:8px}
+.gate__lead{margin-top:12px;font-size:13.5px;color:var(--ink-2);line-height:1.85}
+.steps{margin-top:20px;padding:0;list-style:none;display:grid;gap:12px}
+.steps li{display:grid;grid-template-columns:26px 1fr;gap:10px}
+.steps__n{
+  width:22px;height:22px;border-radius:50%;background:var(--paper-2);color:var(--accent-deep);
+  display:grid;place-items:center;font-size:11.5px;font-family:var(--serif)
+}
+.steps__t{font-size:13px;font-weight:500}
+.steps__d{margin-top:3px;font-size:12px;color:var(--muted);line-height:1.8}
+.gate__form{margin-top:22px;display:grid;gap:8px}
+.field__label{font-size:12px;letter-spacing:.06em;color:var(--ink-2);font-weight:500}
+.input{
+  width:100%;padding:11px 13px;border:1px solid var(--line-2);border-radius:3px;
+  background:#fff;font:inherit;font-size:14px;color:var(--ink);
+}
+.input:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:var(--accent)}
+.input--sm{padding:8px 11px;font-size:13px;margin-top:8px}
+textarea.input{min-height:84px;resize:vertical;line-height:1.7}
+.hint{font-size:11.5px;color:var(--muted);line-height:1.7}
+.gate__opt{margin:6px 0 2px}
+.check{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--ink-2);cursor:pointer}
+.check input{width:15px;height:15px;accent-color:var(--accent)}
+.gate__pin{margin-top:6px;font-size:12.5px;color:var(--ink-2)}
+.gate__pin summary{cursor:pointer;color:var(--accent-deep)}
+.gate__pin-body{padding:10px 0 0 2px}
+.gate__foot{margin-top:16px;font-size:12px;color:var(--muted)}
+.alert{
+  margin:6px 0;padding:9px 12px;border-radius:3px;font-size:12.5px;
+  background:#fbeee9;color:var(--bad);border:1px solid #f0d3c9;
+}
+.alert.is-ok{background:#edf7f1;color:var(--ok);border-color:#cfe8da}
+.alert.is-warn{background:#fdf5e6;color:var(--warn);border-color:#efdfbd}
+
+/* editor */
+.toolbar{display:flex;align-items:baseline;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:14px}
+.toolbar__title{font-family:var(--serif);font-size:clamp(17px,2.2vw,21px)}
+.toolbar__meta{font-size:12px;color:var(--muted)}
+.notice{
+  padding:12px 15px;background:#fff;border:1px solid var(--line);border-left:3px solid var(--accent);
+  font-size:12.5px;color:var(--ink-2);line-height:1.8;margin-bottom:18px;
+}
+
+.card{background:#fff;border:1px solid var(--line);padding:clamp(18px,2.6vw,26px);margin-bottom:16px}
+.card__head{margin-bottom:16px}
+.card__head h2{font-family:var(--serif);font-weight:500;font-size:17px}
+.card__lead{margin-top:5px;font-size:12.5px;color:var(--muted);line-height:1.75}
+.fields{display:grid;gap:14px}
+.field{display:grid;gap:5px}
+.field--2{grid-template-columns:1fr 1fr;gap:14px}
+.field__note{font-size:11.5px;color:var(--muted)}
+
+/* list editor */
+.list{display:grid;gap:12px}
+.item{border:1px solid var(--line);background:var(--paper);padding:14px}
+.item__head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px}
+.item__no{font-family:var(--serif);font-size:12px;letter-spacing:.14em;color:var(--accent)}
+.item__tools{display:flex;gap:6px}
+.iconbtn{
+  width:28px;height:28px;border:1px solid var(--line-2);background:#fff;border-radius:3px;
+  display:grid;place-items:center;cursor:pointer;font-size:12px;color:var(--ink-2);
+}
+.iconbtn:hover{border-color:var(--accent);color:var(--accent-deep)}
+.iconbtn[disabled]{opacity:.35;cursor:default}
+.item .fields{gap:10px}
+.item .field__label{font-size:11.5px;color:var(--muted);font-weight:400}
+
+/* price groups */
+.group{border:1px solid var(--line);background:var(--paper);padding:14px;margin-bottom:12px}
+.group__row{display:grid;gap:10px;grid-template-columns:1fr 1fr}
+.pricerow{display:grid;grid-template-columns:1.4fr .8fr 1fr 28px;gap:8px;margin-top:8px;align-items:center}
+.pricerow input{font-size:13px;padding:8px 10px}
+
+.backup{display:flex;flex-wrap:wrap;gap:10px}
+
+/* savebar */
+.savebar{
+  position:fixed;left:0;right:0;bottom:0;z-index:30;
+  background:rgba(251,248,244,.98);border-top:1px solid var(--line);
+  backdrop-filter:blur(8px);
+}
+.savebar__inner{
+  max-width:1000px;margin:0 auto;padding:11px clamp(14px,3vw,26px);
+  display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;
+}
+.savebar__status{font-size:12.5px;color:var(--ink-2)}
+.savebar__status.is-dirty{color:var(--warn)}
+.savebar__status.is-ok{color:var(--ok)}
+.savebar__status.is-bad{color:var(--bad)}
+.savebar__status.is-warn{color:var(--warn)}
+.savebar__actions{display:flex;gap:8px}
+.bottomspace{height:70px}
+
+@media (max-width:760px){
+  .field--2,.group__row{grid-template-columns:1fr}
+  .pricerow{grid-template-columns:1fr 1fr;grid-auto-rows:auto}
+  .pricerow .iconbtn{grid-column:2;justify-self:end}
+  .savebar__inner{flex-direction:column;align-items:stretch;gap:8px}
+  .savebar__actions .btn{flex:1}
+}
